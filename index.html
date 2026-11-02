@@ -314,9 +314,6 @@
     async function generateWithGemini() {
         const apiKey = localStorage.getItem('gemini_api_key');
         if (!apiKey) {
-            //alert('右上の設定ボタン(⚙️)からGeminiのAPIキーを入力してください！🔑');
-            //openModal();
-
             const response = await fetch("api/gemini",{
                                         method:'POST',
                                         headers: {'Content-Type':'application/json'},
@@ -325,9 +322,9 @@
             alert(response.ok);
             if( response.ok ) {
                 apiKey = data.apiKey;
-                alert("APIKEY:" + apiKey);
-                localStorage.setItem('gemini_api_key', apiKey);
-
+                alert('data:' + data.apiKey);
+                alert('APIKEY:' + apiKey);
+                localStorage.setItem('gemini_api_key', data.apiKey);
             } else {
                 alert('エラーが発生しました。APIキーが正しいか、または通信状態を確認してみてね！😥\nエラー内容: ' + error.message); 
             }
