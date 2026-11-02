@@ -320,14 +320,18 @@
             });
             const data = await response.json();
             alert(response.ok);
-            if( response.ok ) {
-                apiKey = data.apiKey;
-                alert('data:' + data.apiKey);
-                alert('APIKEY:' + apiKey);
-                localStorage.setItem('gemini_api_key', data.apiKey);
-            } else {
-                alert('エラーが発生しました。APIキーが正しいか、または通信状態を確認してみてね！😥\nエラー内容: ' + error.message); 
-            }
+            try {
+                if( response.ok ) {
+                    apiKey = data.apiKey;
+                    alert('data:' + data.apiKey);
+                    alert('APIKEY:' + apiKey);
+                    localStorage.setItem('gemini_api_key', data.apiKey);
+                } else {
+                    alert('エラーが発生しました。APIキーが正しいか、または通信状態を確認してみてね！😥\nエラー内容: ' + error.message); 
+                }
+           } catch (error) {
+              alert('JavaScript実行エラー、または通信失敗が発生しました！😥\nエラー内容: ' + error.message);
+           }
         }
 
         const mood = document.getElementById('mood-select').value;
