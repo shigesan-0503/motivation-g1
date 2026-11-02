@@ -313,7 +313,6 @@
 <script>
     async function generateWithGemini() {
         let apiKey = localStorage.getItem('gemini_api_key');
-        alert("local:" + apiKey);
         if (!apiKey) {
             const response = await fetch("api/gemini",{
                                         method:'POST',
@@ -370,6 +369,7 @@
         try {
             // Gemini 3 flash preview APIのエンドポイント (推奨モデル)
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+        alert("local:" + url);
 
             const response = await fetch(url, {
                 method: 'POST',
