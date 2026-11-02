@@ -321,8 +321,8 @@
                                         method:'POST',
                                         headers: {'Content-Type':'application/json'},
             });
-            const data = await response.text();
-            alert(data);
+            const data = await response.json();
+            alert(data.apiKey);
             if( response.ok ) {
                 apiKey = data.apiKey;
                 console.log("APIKEY:" + apiKey);
