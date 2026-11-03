@@ -383,7 +383,7 @@
             });
 
             if (!response.ok) {
-                throw new Error(`APIエラーが発生しました (Status: ${response.status} ${response.message})`);
+                throw new Error(`APIエラーが発生しました (Status: ${response.status} ${response.text()})`);
             }
 
             const data = await response.json();
