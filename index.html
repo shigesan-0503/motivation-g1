@@ -370,7 +370,6 @@
             // Gemini 3 flash preview APIのエンドポイント (推奨モデル)
             //const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-        alert("local:" + url);
 
             const response = await fetch(url, {
                 method: 'POST',
@@ -384,7 +383,7 @@
             });
 
             if (!response.ok) {
-                throw new Error(`APIエラーが発生しました (Status: ${response.status})`);
+                throw new Error(`APIエラーが発生しました (Status: ${response.status} ${response.message})`);
             }
 
             const data = await response.json();
